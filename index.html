@@ -1,43 +1,20 @@
-{
-  "manifest_version": 2,
-  "name": "CroxyProxy Web Proxy",
-  "version": "1.13.3",
-  "description": "Web proxy Chrome extension based on CroxyProxy.",
-  "icons": {
-    "16": "shared/images/icon-enabled-16.png",
-    "48": "shared/images/icon-enabled-48.png",
-    "128": "shared/images/icon-enabled-128.png"
-  },
-  "permissions": [
-    "tabs",
-    "storage",
-    "webRequest",
-    "webRequestBlocking",
-    "https://croxyproxy.com/",
-    "*://*.croxyproxy.com/"
-  ],
-  "background": {
-    "page": "shared/bg.htm"
-  },
-  "browser_action": {
-    "default_popup": "shared/pp.htm",
-    "default_icon": {
-      "16": "shared/images/icon-enabled-16.png",
-      "48": "shared/images/icon-enabled-48.png",
-      "128": "shared/images/icon-enabled-128.png"
-    }
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": [
-        "shared/bootstrap/js/bootstrap.min.js",
-        "shared/content.js"
-      ],
-      "run_at": "document_start"
-    }
-  ],
-  "web_accessible_resources": [
-    "shared/images/*"
-  ]
-}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CroxyProxy Web Proxy</title>
+  <link rel="stylesheet" href="pp.css"/>
+</head>
+<body>
+  <div id="main">
+    <h1>CroxyProxy Web Proxy</h1>
+    <div id="controls">
+      <label for="proxy-url">URL:</label>
+      <input type="text" id="proxy-url" placeholder="https://example.com">
+      <button id="proxy-btn">Go</button>
+    </div>
+    <div id="status"></div>
+  </div>
+  <script src="pp.js"></script>
+</body>
+</html>
